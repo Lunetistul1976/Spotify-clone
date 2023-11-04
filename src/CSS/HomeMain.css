@@ -1,0 +1,35 @@
+.Main-container {
+    display: flex;
+    justify-content: center;
+    background-color: #141313;
+    position: relative;
+}
+
+/*.Main-songs p,
+.Main-songs_2 p,
+.Main-songs_3 p{
+
+    color: #edefee;
+    position: relative;
+    justify-content: center;
+    margin-left: 290px;
+    margin-top: 40px;
+    bottom: 25px;
+}*/
+
+.Main-songs img,
+.Main-songs_2 img,
+.Main-songs_3 img{
+width: 200px;
+height: 200px;
+}
+
+
+.Main-songs,
+.Main-songs_2,
+.Main-songs_3 {
+ margin-right: 300px;
+ margin-top: 50px;
+ position: relative;
+ right: 20px
+}

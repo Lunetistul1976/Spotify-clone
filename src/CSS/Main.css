@@ -1,0 +1,42 @@
+.Main-container {
+    display: flex;
+    justify-content: center;
+}
+
+.Main-container table {
+    width: 100%; /* Make the table extend to the entire width of the container */
+    border-collapse: collapse; /* Remove space between table cells */
+    margin-left: 200px;
+}
+
+.Main-container th {
+    padding: 10px; /* Add padding for spacing between cells */
+    text-align: left; /* Adjust text alignment */
+    color: #EDEFEE;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.Main-container td {
+    padding: 10px;
+    left: 40px;
+    text-align: left;
+    padding-left: 12.5px;
+    color: #FFFFFF;
+    font-size: 20px;
+    font-weight: 500;
+    
+}
+
+
+
+.Main-container td img {
+    width: 40px;
+    height: 40px;
+    display: block; /* Make the image occupy an entire column */
+    margin: 0 auto; /* Center the image horizontally within the cell */
+}
+
+
+/* Add some additional styling for alternate row colors (optional) */
+

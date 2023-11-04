@@ -1,0 +1,75 @@
+.Playlist-container {
+    background-color: #FFC7D1;
+    height: 300px;
+    padding-top: 5px;
+}
+
+.Playlist-info {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    margin-left: -460px;
+    position: relative;
+}
+
+.Playlist-info_b input {
+    position: relative;
+    top: 101px;
+    left: 85px;
+    width: 600px;
+    height: 50px;
+    border-radius: 20px;
+    outline: none;
+    background-color: #d4d4d4;
+    color: #141313;
+    padding-left: 57px;
+    font-size: 20px; /* Adjust the font size as needed */
+    font-weight: 600; /* Adjust the font weight as needed */
+}
+
+/* Style the placeholder text for better visibility */
+.Playlist-info_b input::placeholder {
+    font-weight: 700;
+    font-size: 22px;
+    position: relative;
+    top: 3px;
+    left: 10px;
+    
+}
+
+.Playlist-info_b img {
+    position: relative;
+    left: 135px;
+    top: 117px;
+    width: 40px;
+    height: 40px;
+    z-index: 2;
+}
+
+/* Add a CSS rule to hide the placeholder when interacting with the input field */
+.Playlist-info_b input:focus{
+transition: transform 0.3s ease; /* Add a transition for smooth movement */
+
+}
+.Login {
+    background-color: #413F3F;
+    width: 180px;
+    height: 53px;
+    border-radius: 20px;
+    color: #FFFFFF;
+    font-size: 25px;
+    font-weight: 500;
+    position: absolute;
+    top: 25px;
+    right: 50px;
+    padding-left: 28px;
+}
+
+.Login-section img {
+    width: 39px;
+    height: 39px;
+    position: absolute;
+    top: 32px;
+    right: 180px;
+    z-index: 2;
+}

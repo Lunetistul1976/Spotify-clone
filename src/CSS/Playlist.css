@@ -1,0 +1,64 @@
+.Playlist-container{
+    background-color: #FFC7D1;
+    height: 300px;
+    padding-top: 5px;
+}
+
+.Playlist-info{
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    margin-left: -460px;
+    
+}
+
+
+.Playlist-info img{
+    width: 200px;
+    height: 200px;
+    margin-right: 50px;
+   
+}
+
+.Playlist-title{
+    margin: 0;
+}
+
+.Playlist-container h1:first-child{
+    font-size: 32px;
+    color: black;
+    font-weight: 700;
+    font-family: sans-serif;
+    -webkit-text-stroke: 1.5px black; /* 60% of 32px is 19.2px, so use an appropriate pixel value */
+}
+
+.Playlist-container h1:nth-child(2){
+    font-size: 32px;
+    color: black;
+    font-weight: 600;
+    font-family: sans-serif;
+}
+
+
+.Login {
+ background-color: #413F3F ;
+ width: 180px;
+ height: 53px;
+ border-radius: 20px;
+ color: #FFFFFF;
+ font-size: 25px;
+ font-weight: 500;
+ position: absolute;
+ top: 25px;
+ right: 50px;
+ padding-left: 28px;
+}
+
+.Login-section img{
+    width: 39px;
+    height: 39px;
+    position: absolute;
+    top: 32px;
+    right: 180px;
+    z-index: 2;
+}

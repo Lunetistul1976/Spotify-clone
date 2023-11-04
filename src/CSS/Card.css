@@ -1,0 +1,89 @@
+
+.music-card-bg{
+    background-color:  #1c1b1b;
+    position: relative;
+    width: 200px;
+    height: 250px;
+    left: 280px;
+    bottom: 35px ;
+    margin-top: 25px;
+    transition: background-color 0.3s; 
+    
+    /* The transition property in CSS is used to control the smooth transition of CSS property values over a specified duration. 
+    It allows you to create smooth and gradual changes in element styles when specific conditions are met, such as when hovering over an element.
+
+    Here's how it works:
+    
+    Property Name: You specify the CSS property you want to apply the transition to. 
+    For example, you can use transition: background-color to apply the transition to the background color property.
+    
+    Duration: You specify the duration of the transition in seconds or milliseconds. 
+    This determines how long it takes for the transition to complete. For example, transition: background-color 0.3s sets the transition duration to 0.3 seconds.
+    
+    Timing Function (Optional): You can specify a timing function that determines the acceleration or deceleration of the transition. 
+    Common timing functions include ease, linear, ease-in, ease-out, and ease-in-out.
+    
+    Delay (Optional): You can also add a delay before the transition begins, in seconds or milliseconds.
+    
+    When you apply a transition to an element, any change in the specified property 
+    (e.g., a change in background color) triggered by an event (e.g., a hover event) will be animated over the specified duration. This creates a smooth and gradual effect, making the change less abrupt and more visually pleasing.
+    
+    In the example I provided earlier, the transition property was used to make the background color change smoothly 
+    from the original color to white (background-color: #1c1b1b to background-color: #FFFFFF) when hovering over the .music-card-bg element. 
+    Additionally, a transition was applied to the opacity property of text elements to make the text slightly fade in and out during the hover event. */
+}
+
+.music-card-bg:hover{
+background-color: #404040;
+}
+
+
+.music-img{
+    position: absolute;
+    right: 0px;
+    top: 10px;
+    
+}
+
+.music-img-hidden{
+    position: absolute;
+    right: 0px;
+    top: 160px;
+    right: 5px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    z-index: 3;
+}
+
+.music-img-hidden img{
+    width: 65px;
+    height: 65px;
+    z-index: 4;
+    transition: opacity 0.3s;
+}
+
+.music-card-bg:hover .music-img-hidden{
+    opacity: 1;
+    z-index: 3;
+}
+
+
+.music-artist{
+    color: #FFFFFF;
+    position: absolute;
+    top: 211px;
+    left: 10px;
+    font-weight: 400;
+    font-size: 16px;
+    opacity: 75%;
+}
+
+.music-title{
+    color: #FFFFFF;
+    position: absolute;
+    justify-content: center;
+    top: 187.5px;
+    left: 10px;
+    font-size: 16px;
+    transition: opacity 0.3s;
+}

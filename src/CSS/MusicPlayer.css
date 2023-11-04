@@ -1,0 +1,77 @@
+.Music-Player-container {
+    background-color: black;
+    width: 100%; /* Set the width to 100% to occupy the entire width of the screen */
+    height: 131px;
+    display: flex; /* Use flexbox to arrange the content in a row */
+    align-items: center; /* Center vertically within the container */
+    padding: 0; /* Remove padding */
+    margin: 0; /* Remove margin */
+    position: relative;
+}
+
+.Music-Player-container input{
+    margin-left: 10px;
+}
+
+.Album-info {
+    display: flex;
+    align-items: center; /* Center vertically within the container */
+    margin-left: 31px; /* Adjust margin */
+}
+
+.Album-info img {
+    width: 80px;
+    height: 80px;
+    margin-right: 15px; /* Add margin to separate the image from buttons */
+}
+
+.Album-info h1{
+    font-size: 25px;
+    font-weight: 600;
+    margin-bottom: 35px;
+    color: #EDEFEE;
+
+}
+
+.Album-info p {
+    position: relative; /* Add relative positioning */
+    right: 47.8px;
+    margin-top: 50px;
+    font-size: 18px;
+    font-weight: 400;
+    color: #EDEFEE;
+    -webkit-text-stroke: 1px rgba(0, 0, 0, 0.1);
+    opacity: 0.6; /* Folosit pentru a specifica cat de puternic se vede aceea culoare*/
+}
+
+.music-layer-buttons {
+    display: flex; /* Display the buttons in a row */
+    margin-left: auto; /* Push the buttons to the right */
+    margin-left: 310px;
+    
+}
+
+.music-layer-buttons img {
+    width: 40px;
+    height: 40px;
+    margin-left: 60px; /* Add margin to separate the buttons */
+    padding: 0; /* Remove padding */
+    
+}
+
+.music-layer-buttons img:nth-child(6){
+    margin-left: 315px;
+
+}
+
+
+#progresion-music{
+    position: absolute;
+    top: 98px;
+    left: 378.9px;
+    width: 800px;
+}
+
+#progresion-volume {
+    margin-right: 0px;
+}
