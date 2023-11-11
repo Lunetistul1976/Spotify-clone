@@ -1,63 +1,101 @@
 import React from "react";
 import '../CSS/HomeMain.css'
-
 import Card from "../Components/Card.js";
 
+const HomeMain = ({ topCharts,playSongApp,stopSongApp,selectedSong }) => {
+  const mainIndices = [1, 3, 4];
+  const secondIndices = [7, 2, 15];
+  const thirdIndices = [10, 14, 11];
 
-const HomeMain=({topCharts}) =>{
-   
-   return(
-<div className="Main-container">
-{topCharts.tracks && topCharts.tracks.length>0?
-<div className="Main-songs">
-   
-<Card topChartsImg={topCharts.tracks[0].images.coverart} topChartsTitle={topCharts.tracks[0].title} topChartsArtist={topCharts.tracks[0].subtitle}/> 
-{/*Checking if topCharts.tracks exists and has a length greater than 0 is a defensive coding practice to ensure that you don't run into errors 
-when trying to access properties of an object or array that might not exist or be empty.
-In JavaScript, attempting to access properties or elements of an undefined variable or an empty array 
-can result in runtime errors, which can cause your application to break. 
-By using conditional checks like topCharts.tracks && topCharts.tracks.length > 0, 
-you are ensuring that the data you want to access actually exists before attempting to access it. */}
-<Card topChartsImg={topCharts.tracks[3].images.coverart} 
-topChartsTitle={topCharts.tracks[3].title} topChartsArtist={topCharts.tracks[3].subtitle}/> 
-<Card topChartsImg={topCharts.tracks[4].images.coverart} 
-topChartsTitle={topCharts.tracks[4].title} topChartsArtist={topCharts.tracks[4].subtitle}/> 
+console.log('This is the selected song:',selectedSong)
+ 
+ 
 
-</div>
-:console.log("Error")}
+  const playSong = (songData) => { //Aceasta functie este folosita pentru a apela functia stop song asupra cantecului redat in prezent atunci cand utilizatorul interactioneaza cu un alt cantec
+    // De asemena aceasta functie va incepe redarea cantecului selectat de utilizator
+    // Stop the current song if there is one playing
+    stopSongApp();
+    // Play the new song
+     playSongApp(songData)
+    
+    
+  };
 
-{topCharts.tracks && topCharts.tracks.length>0?
-<div className="Main-songs_2">
+  return (
+    <div className="Main-container">
+      {topCharts && topCharts.tracks && topCharts.tracks.length > 0 ? (
+        <div className="Main-songs">
+          {mainIndices.map((index) => ( /* Cand folosesc proprietatile unui obiect, inainte de a le putea folosi trebuie sa verific daca acestea
+          sunt definite/ exista. Daca lucrez cu o lista, inainte de a accesa index ul acelei liste va trebui sa verific daca exista lista 
+          */
+             topCharts.tracks[index].hub.actions  ?  (
+              <Card
+                topChartsImg={topCharts.tracks[index].images.coverart}
+                topChartsSong={topCharts.tracks[index].hub.actions[1].uri}
+                topChartsTitle={topCharts.tracks[index].title}
+                topChartsArtist={topCharts.tracks[index].subtitle}
+                
+                playSongHome={ playSong}
+                stopSong={stopSongApp}
+                isPlaying={
+                  selectedSong &&
+                  selectedSong.song === topCharts.tracks[index].hub.actions[1].uri
+                }
+              />
+            ):(console.log("Error at second if Card 1:"))
+          ))}
+        </div>
+      ) : (
+        console.log("Error at Card 1")
+      )}
 
-<Card topChartsImg={topCharts.tracks[6].images.coverart} 
-topChartsTitle={topCharts.tracks[6].title} topChartsArtist={topCharts.tracks[6].subtitle}/> 
-<Card topChartsImg={topCharts.tracks[15].images.coverart} 
-topChartsTitle={topCharts.tracks[15].title} topChartsArtist={topCharts.tracks[15].subtitle}/> 
-<Card topChartsImg={topCharts.tracks[16].images.coverart} 
-topChartsTitle={topCharts.tracks[16].title} topChartsArtist={topCharts.tracks[16].subtitle}/> 
+      {topCharts && topCharts.tracks && topCharts.tracks.length > 0 ? (
+        <div className="Main-songs_2">
+          {secondIndices.map((index) => (
+             topCharts.tracks[index].hub.actions ?  (
+               <Card
+                 topChartsImg={topCharts.tracks[index].images.coverart}
+                 topChartsSong={topCharts.tracks[index].hub.actions[1].uri}
+                 topChartsTitle={topCharts.tracks[index].title}
+                 topChartsArtist={topCharts.tracks[index].subtitle}
+                 playSongHome={playSong}
+                 stopSong={stopSongApp}
+                 isPlaying={
+                   selectedSong &&
+                   selectedSong.song === topCharts.tracks[index].hub.actions[1].uri
+                 }
+               />
+             ):(console.log("Error at second if Card 2:"))
+          ))}
+        </div>
+      ) : (
+        console.log("Error at Card 2")
+      )}
 
-</div>
-:console.log("Error")}
-
-
-{topCharts.tracks && topCharts.tracks.length>0?
-
-<div className="Main-songs_3">
-
-<Card topChartsImg={topCharts.tracks[8].images.coverart} 
-topChartsTitle={topCharts.tracks[8].title} topChartsArtist={topCharts.tracks[8].subtitle}/> 
-<Card topChartsImg={topCharts.tracks[13].images.coverart} 
-topChartsTitle={topCharts.tracks[13].title} topChartsArtist={topCharts.tracks[13].subtitle}/> 
-<Card topChartsImg={topCharts.tracks[10].images.coverart} 
-topChartsTitle={topCharts.tracks[10].title} topChartsArtist={topCharts.tracks[10].subtitle}/> 
-
-</div>
-:console.log("Error")}
-
-</div>
-
-
-   )
+      {topCharts && topCharts.tracks && topCharts.tracks.length > 0 ? (
+        <div className="Main-songs_3">
+          {thirdIndices.map((index) => (
+            topCharts.tracks[index].hub.actions ?  (
+               <Card
+                 topChartsImg={topCharts.tracks[index].images.coverart}
+                 topChartsSong={topCharts.tracks[index].hub.actions[1].uri}
+                 topChartsTitle={topCharts.tracks[index].title}
+                 topChartsArtist={topCharts.tracks[index].subtitle}
+                 playSongHome={playSong}
+                 stopSong={stopSongApp}
+                 isPlaying={
+                   selectedSong &&
+                   selectedSong.song === topCharts.tracks[index].hub.actions[1].uri
+                 }
+               />
+             ):(console.log("Error at second if Card 3:"))
+          ))}
+        </div>
+      ) : (
+        console.log("Error at  Card 3")
+      )}
+    </div>
+  );
 }
 
-export default HomeMain
+export default HomeMain;

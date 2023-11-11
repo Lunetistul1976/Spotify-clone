@@ -13,7 +13,7 @@ import axios from 'axios';
 const api_options={
   method: 'GET',
   headers: {
-    'X-RapidAPI-Key': '136dbafabdmsh324dbd9bc3a44cep132ec4jsn92bea8b9aea7',
+    'X-RapidAPI-Key': 'fb2caa4809msh99ba38d666e8431p18e1dbjsn4f05e91d59c8',
     'X-RapidAPI-Host': 'shazam.p.rapidapi.com',
   },
 };
@@ -27,6 +27,28 @@ const TopChartsURL = 'https://shazam.p.rapidapi.com/charts/track'
   const [favorites,setFavorites] = useState(false)
   const [search,setSearch] = useState(false)
   const [topCharts,setTopCharts] = useState([])
+  const [selectedSong,setSelectedSong] = useState(null)
+  const [information,setInformation] = useState(null)
+  const [songProgress,setSongProgress] = useState(0)
+
+  const stopSong=()=>{// Aceasta functie este folosita pentru a opri melodia din redare
+    if(selectedSong&&selectedSong.audioRef&&selectedSong.audioRef.current){
+      selectedSong.audioRef.current.pause()
+    }
+    setSelectedSong(null)
+  };
+
+const playSong=(songData)=>{ // Aceasta functie este folosita pentru a seta valoarea variabilei selectedSong la null
+  //Pentru a apela metoda Play a elementului audio si pentru a updata obiectul selectedSong. Acesta va retine fisierul audio si referinta catre elementul audio folosit curent
+  setSelectedSong(null)
+  if(songData&&songData.audioRef&&songData.audioRef.current)
+  {
+    songData.audioRef.current.play()
+  }
+  setSelectedSong(songData)
+};
+
+
 
   const show_home=(e)=>{
     e.preventDefault()
@@ -53,14 +75,20 @@ const TopChartsURL = 'https://shazam.p.rapidapi.com/charts/track'
 
 useEffect(()=>{
   const fetchCharts = async() =>{
+    try {
     const response = await axios.get(TopChartsURL,api_options)
     setTopCharts(response.data)
     console.log(topCharts)
    }
-  if(home===true){
+   catch(error){
+    console.log("Error in obtaining data:" ,error)//Se incearca executia codului.Daca apare o eroare aceasta va fi prinsa de blocul/functia catch si afisata in consola
+   }
+  }
+  if(home){
     fetchCharts();
   }
-},[ ]) // The empty dependency array ensures this effect runs only once. Cand executi operatii in fundal precum retinerea datelor de la API se foloseste UseEffect
+},[]) // The empty dependency array ensures this effect runs only once. 
+//Cand executi operatii in fundal precum retinerea datelor de la API se foloseste UseEffect
 
 
 
@@ -71,8 +99,9 @@ useEffect(()=>{
       </div>
       <Sidebar showHome={show_home} showFavorites={show_favorites} showSearch={show_search}/> {/* Pentru a transmite date/proprietati din componenta aplicatie va trebui sa pozitionez aceea functie
       / atribut intre {} si sa ii asociez o variabila. Este bine ca numele se coincida */}
-      {home===true ? <HomeMain topCharts={topCharts} />: favorites?<Main/>: search?<SearchResults/>:null}
-      <MusicPlayer />
+      {home===true ? <HomeMain topCharts={topCharts} playSongApp={playSong} stopSongApp={stopSong} selectedSong={selectedSong} setSelectedSong={setSelectedSong} />
+      : favorites?<Main/>: search?<SearchResults/>:null}
+      <MusicPlayer selectedSong={selectedSong} songProgress={songProgress} setSongProgress={setSongProgress} />
     </div>
   );
 }
