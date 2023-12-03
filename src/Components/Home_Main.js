@@ -1,48 +1,45 @@
-import React from "react";
-import '../CSS/HomeMain.css'
+import React,{useRef} from "react";
+import '../CSS/HomeMain.css';
 import Card from "../Components/Card.js";
+import MusicPlayer from "../Components/MusicPlayer";
 
-const HomeMain = ({ topCharts,playSongApp,stopSongApp,selectedSong }) => {
-  const mainIndices = [1, 3, 4];
-  const secondIndices = [7, 2, 15];
-  const thirdIndices = [10, 14, 11];
+const HomeMain = ({ topCharts, playSongApp, stopSongApp, selectedSong, setInformation, volume,songProgress,setSongProgress
+  ,information,songFavorites,setSongFavorites,setVolume,setSelectedSong }) => {
+  const mainIndices = [8, 3, 9];
+  const secondIndices = [7, 2, 10];
+  const thirdIndices = [5, 11, 4];
 
-console.log('This is the selected song:',selectedSong)
- 
- 
+  const audioRef = useRef(new Audio());
 
-  const playSong = (songData) => { //Aceasta functie este folosita pentru a apela functia stop song asupra cantecului redat in prezent atunci cand utilizatorul interactioneaza cu un alt cantec
-    // De asemena aceasta functie va incepe redarea cantecului selectat de utilizator
-    // Stop the current song if there is one playing
+  const playSong = (songData) => {
     stopSongApp();
-    // Play the new song
-     playSongApp(songData)
-    
-    
+    playSongApp(songData);
+    setInformation(songData);
   };
 
   return (
     <div className="Main-container">
       {topCharts && topCharts.tracks && topCharts.tracks.length > 0 ? (
         <div className="Main-songs">
-          {mainIndices.map((index) => ( /* Cand folosesc proprietatile unui obiect, inainte de a le putea folosi trebuie sa verific daca acestea
-          sunt definite/ exista. Daca lucrez cu o lista, inainte de a accesa index ul acelei liste va trebui sa verific daca exista lista 
-          */
-             topCharts.tracks[index].hub.actions  ?  (
-              <Card
-                topChartsImg={topCharts.tracks[index].images.coverart}
-                topChartsSong={topCharts.tracks[index].hub.actions[1].uri}
-                topChartsTitle={topCharts.tracks[index].title}
-                topChartsArtist={topCharts.tracks[index].subtitle}
-                
-                playSongHome={ playSong}
-                stopSong={stopSongApp}
-                isPlaying={
-                  selectedSong &&
-                  selectedSong.song === topCharts.tracks[index].hub.actions[1].uri
-                }
-              />
-            ):(console.log("Error at second if Card 1:"))
+          {mainIndices.map((index) => (
+            topCharts.tracks[index].hub.actions ? (
+              <div key={index}>
+                <Card
+                  topChartsImg={topCharts.tracks[index].images.coverart}
+                  topChartsSong={topCharts.tracks[index].hub.actions[1].uri}
+                  topChartsTitle={topCharts.tracks[index].title}
+                  topChartsArtist={topCharts.tracks[index].subtitle}
+                  playSongHome={playSong}
+                  stopSong={stopSongApp}
+                  setInformation={setInformation}
+                  isPlaying={
+                    selectedSong &&
+                    selectedSong.song === topCharts.tracks[index].hub.actions[1].uri
+                  }
+                  volume={volume}
+                />
+              </div>
+            ) : (console.log("Error at second if Card 1:"))
           ))}
         </div>
       ) : (
@@ -52,20 +49,24 @@ console.log('This is the selected song:',selectedSong)
       {topCharts && topCharts.tracks && topCharts.tracks.length > 0 ? (
         <div className="Main-songs_2">
           {secondIndices.map((index) => (
-             topCharts.tracks[index].hub.actions ?  (
-               <Card
-                 topChartsImg={topCharts.tracks[index].images.coverart}
-                 topChartsSong={topCharts.tracks[index].hub.actions[1].uri}
-                 topChartsTitle={topCharts.tracks[index].title}
-                 topChartsArtist={topCharts.tracks[index].subtitle}
-                 playSongHome={playSong}
-                 stopSong={stopSongApp}
-                 isPlaying={
-                   selectedSong &&
-                   selectedSong.song === topCharts.tracks[index].hub.actions[1].uri
-                 }
-               />
-             ):(console.log("Error at second if Card 2:"))
+            topCharts.tracks[index].hub.actions ? (
+              <div key={index}>
+                <Card
+                  topChartsImg={topCharts.tracks[index].images.coverart}
+                  topChartsSong={topCharts.tracks[index].hub.actions[1].uri}
+                  topChartsTitle={topCharts.tracks[index].title}
+                  topChartsArtist={topCharts.tracks[index].subtitle}
+                  playSongHome={playSong}
+                  stopSong={stopSongApp}
+                  setInformation={setInformation}
+                  isPlaying={
+                    selectedSong &&
+                    selectedSong.song === topCharts.tracks[index].hub.actions[1].uri
+                  }
+                  volume={volume}
+                />
+              </div>
+            ) : (console.log("Error at second if Card 2:"))
           ))}
         </div>
       ) : (
@@ -75,24 +76,48 @@ console.log('This is the selected song:',selectedSong)
       {topCharts && topCharts.tracks && topCharts.tracks.length > 0 ? (
         <div className="Main-songs_3">
           {thirdIndices.map((index) => (
-            topCharts.tracks[index].hub.actions ?  (
-               <Card
-                 topChartsImg={topCharts.tracks[index].images.coverart}
-                 topChartsSong={topCharts.tracks[index].hub.actions[1].uri}
-                 topChartsTitle={topCharts.tracks[index].title}
-                 topChartsArtist={topCharts.tracks[index].subtitle}
-                 playSongHome={playSong}
-                 stopSong={stopSongApp}
-                 isPlaying={
-                   selectedSong &&
-                   selectedSong.song === topCharts.tracks[index].hub.actions[1].uri
-                 }
-               />
-             ):(console.log("Error at second if Card 3:"))
+            topCharts.tracks[index].hub.actions ? (
+              <div key={index}>
+                <Card
+                  topChartsImg={topCharts.tracks[index].images.coverart}
+                  topChartsSong={topCharts.tracks[index].hub.actions[1].uri}
+                  topChartsTitle={topCharts.tracks[index].title}
+                  topChartsArtist={topCharts.tracks[index].subtitle}
+                  playSongHome={playSong}
+                  stopSong={stopSongApp}
+                  setInformation={setInformation}
+                  isPlaying={
+                    selectedSong &&
+                    selectedSong.song === topCharts.tracks[index].hub.actions[1].uri
+                  }
+                  volume={volume}
+                />
+              </div>
+            ) : (console.log("Error at second if Card 3:"))
           ))}
         </div>
       ) : (
         console.log("Error at  Card 3")
+      )}
+
+      {selectedSong && (
+        <div className="MusicPlayer-container2">
+          <MusicPlayer
+            selectedSong={selectedSong}
+            songProgress={songProgress}
+            setSongProgress={setSongProgress}
+            information={information}
+            songFavorites={songFavorites}
+            setSongFavorites={setSongFavorites}
+            volume={volume}
+            setVolume={setVolume}
+            setInformation={setInformation}
+            topCharts={topCharts}
+            playSongApp={playSong}
+            setSelectedSong={setSelectedSong}
+            audioRef={audioRef}
+          />
+        </div>
       )}
     </div>
   );

@@ -1,77 +1,145 @@
+/* Container for the music player */
 .Music-Player-container {
     background-color: black;
     width: 100%; /* Set the width to 100% to occupy the entire width of the screen */
-    height: 131px;
+    height: 7rem;
     display: flex; /* Use flexbox to arrange the content in a row */
     align-items: center; /* Center vertically within the container */
-    padding: 0; /* Remove padding */
-    margin: 0; /* Remove margin */
-    position: relative;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+   z-index: 2;
+    
 }
 
-.Music-Player-container input{
-    margin-left: 10px;
+.MusicPlayer-container2{
+    background-color: black;
+    width: 100%; /* Set the width to 100% to occupy the entire width of the screen */
+    height: 8.188rem;
+    display: flex; /* Use flexbox to arrange the content in a row */
+    align-items: center; /* Center vertically within the container */
+    padding: 0;
+    margin: 0;
+    position: fixed;
+    top: 593px;
+   z-index: 10000;
 }
 
+/*.MusicPlayer-container3 {
+    background-color: black;
+    width: 100%;
+    height: 8.188rem;
+    display: flex;
+    align-items: center;
+    position: fixed;
+    padding: 0;
+    margin: 0;
+    top: 600px;
+    z-index: 100000;
+}*/
+
+/* Adjusting margin for input elements inside the container */
+.Music-Player-container input {
+    margin-left: 0.625rem;
+}
+
+/* Container for album information */
 .Album-info {
     display: flex;
     align-items: center; /* Center vertically within the container */
-    margin-left: 31px; /* Adjust margin */
+    margin-left: 1.938rem; /* Adjust margin */
+    
 }
 
+/* Styling for the album cover image */
 .Album-info img {
-    width: 80px;
-    height: 80px;
-    margin-right: 15px; /* Add margin to separate the image from buttons */
+    width: 5rem;
+    height: 5rem;
+    margin-right: 0.938rem; /* Add margin to separate the image from buttons */
+    position: relative;
+    left: 50px;
 }
 
-.Album-info h1{
-    font-size: 25px;
+/* Styling for the album title */
+.Album-info h1 {
+    font-size: 1.563rem;
+    width: 240px;
+    display: inline-block;
     font-weight: 600;
-    margin-bottom: 35px;
+    margin-bottom: 20px;
+    margin-top: -30px;
     color: #EDEFEE;
+    position: absolute;
+    left: 162.5px;
+    white-space: nowrap;
 
 }
 
+/* Styling for additional information (p) */
 .Album-info p {
-    position: relative; /* Add relative positioning */
-    right: 47.8px;
-    margin-top: 50px;
-    font-size: 18px;
+    justify-content: flex-start; /* Not necessary, as it's a paragraph element */
+    width: 160px;
+    margin-top: 3.125rem;
+    font-size: 1.125rem;
     font-weight: 400;
     color: #EDEFEE;
     -webkit-text-stroke: 1px rgba(0, 0, 0, 0.1);
-    opacity: 0.6; /* Folosit pentru a specifica cat de puternic se vede aceea culoare*/
+    opacity: 0.6; /* Used to specify the transparency of the color */
+    position: absolute;
+    margin-top: 55px;
+    left: 200px;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
+/* Container for music player buttons */
 .music-layer-buttons {
     display: flex; /* Display the buttons in a row */
     margin-left: auto; /* Push the buttons to the right */
-    margin-left: 310px;
-    
+    margin-left: 24.8rem; /* Adjusting margin */
 }
 
+/* Styling for the buttons' images */
+/* Styling for the buttons' images */
 .music-layer-buttons img {
-    width: 40px;
-    height: 40px;
-    margin-left: 60px; /* Add margin to separate the buttons */
-    padding: 0; /* Remove padding */
-    
+    width: 2.5rem;
+    height: 2.5rem;
+    margin-left: 3.75rem; /* Add margin to separate the buttons */
+    padding: 0rem; /* Remove padding */
+    position: relative;
+    bottom: 20px;
+    cursor: pointer;
+    transition: transform 0.3s ease; /* Add a smooth transition effect */
 }
 
-.music-layer-buttons img:nth-child(6){
-    margin-left: 315px;
+.music-layer-buttons img:hover {
+    transform: scale(1.2); /* Scale the button on hover */
+}
 
+/* Adjusting margin for the sixth button */
+.music-layer-buttons img:nth-child(6) {
+    margin-left: 17rem;
+    margin-right: 0;
+}
+
+.music-layer-buttons img:nth-child(3) {
+    transition: ease-out 0.3s;
 }
 
 
-#progresion-music{
+/* Styling for the music progression bar */
+#progresion-music {
     position: absolute;
-    top: 98px;
-    left: 378.9px;
-    width: 800px;
+    top: 4.95rem;
+    left: 24.7rem;
+    width: 50rem;
+    bottom: 24px;
+    border-radius: 10px; 
 }
 
+/* Styling for the volume progression bar */
 #progresion-volume {
-    margin-right: 0px;
+    margin-right: 0rem;
+    position: relative;
+    bottom: 20px;
 }

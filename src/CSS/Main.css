@@ -1,15 +1,21 @@
-.Main-container {
+.Main-container2 {
     display: flex;
+    position: relative;
     justify-content: center;
+    min-height: 28.281rem;
+     /* Hide any content that overflows the container */
 }
 
-.Main-container table {
+.Main-container2 table {
+    background-color: #141313;
     width: 100%; /* Make the table extend to the entire width of the container */
     border-collapse: collapse; /* Remove space between table cells */
     margin-left: 200px;
+    max-height: 100%; /* Set a maximum height for the table */
+    overflow-y: auto; /* Add vertical scroll if the table exceeds the maximum height */
 }
 
-.Main-container th {
+.Main-container2 th {
     padding: 10px; /* Add padding for spacing between cells */
     text-align: left; /* Adjust text alignment */
     color: #EDEFEE;
@@ -17,7 +23,7 @@
     font-weight: 400;
 }
 
-.Main-container td {
+.Main-container2 td {
     padding: 10px;
     left: 40px;
     text-align: left;
@@ -25,12 +31,13 @@
     color: #FFFFFF;
     font-size: 20px;
     font-weight: 500;
+    margin-top: -20px;
     
 }
 
 
 
-.Main-container td img {
+.Main-container2 td img {
     width: 40px;
     height: 40px;
     display: block; /* Make the image occupy an entire column */

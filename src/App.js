@@ -6,19 +6,19 @@ import PlaylistHome from './Components/PlaylistHome';
 import HomeMain from './Components/Home_Main';
 import SearchHeader from './Components/SearchHeader';
 import './App.css';
-import React,{useEffect, useState} from 'react';
+import React,{useEffect, useState,useRef} from 'react';
 import SearchResults from './Components/Search_Results';
 import axios from 'axios';
 
 const api_options={
   method: 'GET',
   headers: {
-    'X-RapidAPI-Key': 'fb2caa4809msh99ba38d666e8431p18e1dbjsn4f05e91d59c8',
+    'X-RapidAPI-Key': 'd49948f7f9msh31004b1b44f6034p1b3e47jsn6c2a0f663014',
     'X-RapidAPI-Host': 'shazam.p.rapidapi.com',
   },
 };
 
-
+const searchSongURL = 'https://shazam.p.rapidapi.com/search'
 const TopChartsURL = 'https://shazam.p.rapidapi.com/charts/track'
 
  function App() {
@@ -30,6 +30,11 @@ const TopChartsURL = 'https://shazam.p.rapidapi.com/charts/track'
   const [selectedSong,setSelectedSong] = useState(null)
   const [information,setInformation] = useState(null)
   const [songProgress,setSongProgress] = useState(0)
+  const [songFavorites,setSongFavorites] = useState([])  
+  const [volume,setVolume]=useState(1.0)
+  const [searchSongs,setSearchSongs] = useState([])
+
+  
 
   const stopSong=()=>{// Aceasta functie este folosita pentru a opri melodia din redare
     if(selectedSong&&selectedSong.audioRef&&selectedSong.audioRef.current){
@@ -44,8 +49,11 @@ const playSong=(songData)=>{ // Aceasta functie este folosita pentru a seta valo
   if(songData&&songData.audioRef&&songData.audioRef.current)
   {
     songData.audioRef.current.play()
+    setSelectedSong(songData)
   }
   setSelectedSong(songData)
+  setInformation({songData})
+
 };
 
 
@@ -54,11 +62,19 @@ const playSong=(songData)=>{ // Aceasta functie este folosita pentru a seta valo
     e.preventDefault()
     setHome(true)
     setFavorites(false)
+    if(selectedSong && selectedSong.audioRef.current){
+      selectedSong.audioRef.current.pause()
+      setSelectedSong(null)
+    }
   };
   const show_favorites = (e) =>{
     e.preventDefault()
     setFavorites(true)
     setHome(false)
+    if(selectedSong && selectedSong.audioRef.current){
+      selectedSong.audioRef.current.pause()
+      setSelectedSong(null)
+    }
   }
 
   const show_search= (e) =>{
@@ -66,6 +82,10 @@ const playSong=(songData)=>{ // Aceasta functie este folosita pentru a seta valo
    setSearch(true)
    setFavorites(false)
    setHome(false)
+   if(selectedSong && selectedSong.audioRef.current){
+    selectedSong.audioRef.current.pause()
+    setSelectedSong(null)
+  }
   }
 
 
@@ -90,20 +110,142 @@ useEffect(()=>{
 },[]) // The empty dependency array ensures this effect runs only once. 
 //Cand executi operatii in fundal precum retinerea datelor de la API se foloseste UseEffect
 
+const [searchTerm,setSearchTerm] = useState('')
+
+  const fetchSongs = async(searchTerm)=>{
+     try{
+     const response = await axios.get(searchSongURL,{
+      ...api_options,
+      params:{
+        term:searchTerm,
+      },
+    });
+     setSearchSongs(response.data)
+     console.log(searchSongs)
+     }
+     catch(error){
+      console.log("Error in obtaining data:" ,error)
+     }
+  }
 
 
-  return (
-    <div className="App">
-      <div className="playlist-background">
-        {home === true ? <PlaylistHome  />: favorites?<Playlist/>: search?<SearchHeader/>:null}
-      </div>
-      <Sidebar showHome={show_home} showFavorites={show_favorites} showSearch={show_search}/> {/* Pentru a transmite date/proprietati din componenta aplicatie va trebui sa pozitionez aceea functie
-      / atribut intre {} si sa ii asociez o variabila. Este bine ca numele se coincida */}
-      {home===true ? <HomeMain topCharts={topCharts} playSongApp={playSong} stopSongApp={stopSong} selectedSong={selectedSong} setSelectedSong={setSelectedSong} />
-      : favorites?<Main/>: search?<SearchResults/>:null}
-      <MusicPlayer selectedSong={selectedSong} songProgress={songProgress} setSongProgress={setSongProgress} />
+const musicPlayerRef = useRef(null);
+
+
+return (
+  <div className="App">
+    <div className="playlist-background">
+      {home === true ? <PlaylistHome /> : favorites ? <Playlist /> : search ? <SearchHeader 
+      fetchSongs={fetchSongs} setSearchTerm={setSearchTerm} searchTerm={searchTerm} stopSong={stopSong} 
+      /> : null}
     </div>
-  );
+    <Sidebar showHome={show_home} showFavorites={show_favorites} showSearch={show_search} />
+
+    <div>
+      {home === true ? (
+        <div>
+          <HomeMain
+            topCharts={topCharts}
+            playSongApp={playSong}
+            stopSongApp={stopSong}
+            selectedSong={selectedSong}
+            setSelectedSong={setSelectedSong}
+            setInformation={setInformation}
+            volume={volume}
+            ref={musicPlayerRef}
+            songProgress={songProgress}
+            setSongProgress={setSongProgress}
+            information={information}
+            songFavorites={songFavorites}
+            setSongFavorites={setSongFavorites}
+            setVolume={setVolume}
+          />
+          {selectedSong && (
+            <div className="MusicPlayer-container">
+              <MusicPlayer
+                ref={musicPlayerRef}
+                selectedSong={selectedSong}
+                songProgress={songProgress}
+                setSongProgress={setSongProgress}
+                information={information}
+                songFavorites={songFavorites}
+                setSongFavorites={setSongFavorites}
+                volume={volume}
+                setVolume={setVolume}
+                setInformation={setInformation}
+                stopSong={stopSong}
+              />
+            </div>
+          )}
+        </div>
+      ) : favorites ? (
+        <div>
+          <Main 
+          selectedSong={selectedSong}
+          songFavorites={songFavorites}
+          playSong={playSong}
+          songProgress={songProgress}
+          setSongProgress={setSongProgress}
+          information={information}
+          setSongFavorites={setSongFavorites}
+          volume={volume}
+          setVolume={setVolume}
+          setInformation={setInformation}
+          topCharts={topCharts}
+          playSongApp={playSong}
+          setSelectedSong={setSelectedSong}
+          stopSong={stopSong}
+          />
+          {selectedSong && (
+            <div className="MusicPlayer-container">
+              <MusicPlayer
+                ref={musicPlayerRef}
+                selectedSong={selectedSong}
+                songProgress={songProgress}
+                setSongProgress={setSongProgress}
+                information={information}
+                songFavorites={songFavorites}
+                setSongFavorites={setSongFavorites}
+                volume={volume}
+                setVolume={setVolume}
+                setInformation={setInformation}
+                stopSong={stopSong}
+              />
+            </div>
+          )}
+        </div>
+      ) : search ? (
+        <div>
+          <SearchResults 
+          searchSongs={searchSongs}
+          setSearchSongs={setSearchSongs}
+          playSongHome={playSong}
+          stopSong={stopSong}
+          setInformation={setInformation}
+          selectedSong={selectedSong}
+          volume={volume}
+          />
+          {selectedSong && (
+            <div className="MusicPlayer-container2">
+              <MusicPlayer
+                ref={musicPlayerRef}
+                selectedSong={selectedSong}
+                songProgress={songProgress}
+                setSongProgress={setSongProgress}
+                information={information}
+                songFavorites={songFavorites}
+                setSongFavorites={setSongFavorites}
+                volume={volume}
+                setVolume={setVolume}
+                setInformation={setInformation}
+              />
+            </div>
+          )}
+        </div>
+      ) : null}
+    </div>
+  </div>
+);
 }
 
 export default App;

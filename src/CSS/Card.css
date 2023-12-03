@@ -9,6 +9,7 @@
     margin-top: 25px;
     transition: background-color 0.3s; 
     
+    
     /* The transition property in CSS is used to control the smooth transition of CSS property values over a specified duration. 
     It allows you to create smooth and gradual changes in element styles when specific conditions are met, such as when hovering over an element.
 
@@ -68,6 +69,23 @@ background-color: #404040;
 }
 
 
+.music-artist-title{
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.marquee {
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    animation: marquee 10s linear infinite; /* Adjust the animation duration as needed */
+}
+
+@keyframes marquee {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
+
 .music-artist{
     color: #FFFFFF;
     position: absolute;
@@ -76,6 +94,7 @@ background-color: #404040;
     font-weight: 400;
     font-size: 16px;
     opacity: 75%;
+    max-width: 200px;
 }
 
 .music-title{
@@ -86,4 +105,5 @@ background-color: #404040;
     left: 10px;
     font-size: 16px;
     transition: opacity 0.3s;
+    max-width: 350px;
 }

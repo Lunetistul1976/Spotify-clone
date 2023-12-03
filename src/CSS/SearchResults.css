@@ -1,0 +1,47 @@
+/* SearchResults.css */
+
+.Main-container1 {
+    display: flex;
+    justify-content: center;
+    background-color: #141313;
+    position: relative;
+    width: 1219px; /* Set the width and height for .Main-container */
+    height: 490px;
+}
+
+.Main-songs1 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 50px;
+    margin-left: -50px;
+    margin-top: 30px;
+}
+
+.Main-songs1 img {
+    width: 200px;
+    height: 200px;
+    
+}
+
+.music-img-hidden{
+    position: absolute;
+    right: 0px;
+    top: 160px;
+    right: 5px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    z-index: 3;
+}
+
+.music-img-hidden img{
+    width: 65px;
+    height: 65px;
+    z-index: 4;
+    transition: opacity 0.3s;
+}
+
+.music-card-bg:hover .music-img-hidden{
+    opacity: 1;
+    z-index: 3;
+}
