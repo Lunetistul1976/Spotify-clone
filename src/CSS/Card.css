@@ -2,11 +2,11 @@
 .music-card-bg{
     background-color:  #1c1b1b;
     position: relative;
-    width: 200px;
-    height: 250px;
-    left: 280px;
-    bottom: 35px ;
-    margin-top: 25px;
+    width: 13.020833333333334vw;
+    height: 16.276041666666668vw;
+    left: 18.229166666666668vw;
+    bottom: 2.2786458333333335vw;
+    margin-top: 1.6276041666666667vw;
     transition: background-color 0.3s; 
     
     
@@ -41,24 +41,24 @@ background-color: #404040;
 
 .music-img{
     position: absolute;
-    right: 0px;
-    top: 10px;
+    right: 0vw;
+    top: 0.6510416666666666vw;
     
 }
 
 .music-img-hidden{
     position: absolute;
     right: 0px;
-    top: 160px;
-    right: 5px;
+    top: 10.416666666666666vw;
+    right:  0.3255208333333333vw;
     opacity: 0;
     transition: opacity 0.3s;
     z-index: 3;
 }
 
 .music-img-hidden img{
-    width: 65px;
-    height: 65px;
+    width: 4.231770833333333vw;
+    height: 4.231770833333333vw;
     z-index: 4;
     transition: opacity 0.3s;
 }
@@ -89,21 +89,21 @@ background-color: #404040;
 .music-artist{
     color: #FFFFFF;
     position: absolute;
-    top: 211px;
-    left: 10px;
+    top: 13.736979166666666vw;
+    left: 0.6510416666666666vw;
     font-weight: 400;
-    font-size: 16px;
+    font-size: 1.0416666666666667vw;
     opacity: 75%;
-    max-width: 200px;
+    max-width: 13.020833333333334vw;
 }
 
 .music-title{
     color: #FFFFFF;
     position: absolute;
     justify-content: center;
-    top: 187.5px;
-    left: 10px;
-    font-size: 16px;
+    top: 12.20703125vw;
+    left:  0.6510416666666666vw;
+    font-size:  1.0416666666666667vw;
     transition: opacity 0.3s;
-    max-width: 350px;
+    max-width: 22.786458333333332vw;
 }

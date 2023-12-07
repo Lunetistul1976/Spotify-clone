@@ -3,6 +3,7 @@
     justify-content: center;
     background-color: #141313;
     position: relative;
+    height: 100%;
    
 }
 
@@ -22,16 +23,37 @@
 .Main-songs img,
 .Main-songs_2 img,
 .Main-songs_3 img{
-width: 200px;
-height: 200px;
+width: 13.020833333333334vw;
+height: 13.020833333333334vw;
 }
 
 
 .Main-songs,
 .Main-songs_2,
 .Main-songs_3 {
- margin-right: 300px;
- margin-top: 50px;
+ margin-right: 19.53125vw;
+ margin-top:  3.2552083333333335vw;
  position: relative;
- right: 20px
+ right: 1.3020833333333333vw;
+ height: 53.78vw;
+}
+
+@media  (max-width: 800px) {
+    .Main-container {
+        display: flex;
+        justify-content: center;
+        background-color: #141313;
+        position: relative;
+       height: 130vw;
+    }
+
+    .Main-songs,
+    .Main-songs_2,
+    .Main-songs_3 {
+     margin-right: 9vw;
+     margin-top:  30.2552083333333335vw;
+     position: relative;
+     right: 1.3020833333333333vw;    
+     z-index: 10000;
+}
 }

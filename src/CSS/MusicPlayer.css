@@ -2,7 +2,7 @@
 .Music-Player-container {
     background-color: black;
     width: 100%; /* Set the width to 100% to occupy the entire width of the screen */
-    height: 7rem;
+    height: 7.291666666666667vw;
     display: flex; /* Use flexbox to arrange the content in a row */
     align-items: center; /* Center vertically within the container */
     padding: 0;
@@ -15,13 +15,13 @@
 .MusicPlayer-container2{
     background-color: black;
     width: 100%; /* Set the width to 100% to occupy the entire width of the screen */
-    height: 8.188rem;
+    height: 8.529166666666667vw;
     display: flex; /* Use flexbox to arrange the content in a row */
     align-items: center; /* Center vertically within the container */
     padding: 0;
     margin: 0;
     position: fixed;
-    top: 593px;
+    top: 38.606770833333336vw;
    z-index: 10000;
 }
 
@@ -40,37 +40,37 @@
 
 /* Adjusting margin for input elements inside the container */
 .Music-Player-container input {
-    margin-left: 0.625rem;
+    margin-left: 0.6510416666666666vw;
 }
 
 /* Container for album information */
 .Album-info {
     display: flex;
     align-items: center; /* Center vertically within the container */
-    margin-left: 1.938rem; /* Adjust margin */
+    margin-left: 2.01875vw; /* Adjust margin */
     
 }
 
 /* Styling for the album cover image */
 .Album-info img {
-    width: 5rem;
-    height: 5rem;
-    margin-right: 0.938rem; /* Add margin to separate the image from buttons */
+    width:  5.208333333333333vw;
+    height:  5.208333333333333vw;
+    margin-right: 0.9770833333333333vw; /* Add margin to separate the image from buttons */
     position: relative;
-    left: 50px;
+    left: 3.2552083333333335vw;
 }
 
 /* Styling for the album title */
 .Album-info h1 {
-    font-size: 1.563rem;
-    width: 240px;
+    font-size: 1.6281249999999998vw;
+    width: 15.625vw;
     display: inline-block;
     font-weight: 600;
-    margin-bottom: 20px;
-    margin-top: -30px;
+    margin-bottom: 1.3020833333333333vw;
+    margin-top: -1.953125vw;
     color: #EDEFEE;
     position: absolute;
-    left: 162.5px;
+    left: 10.579427083333334vw;
     white-space: nowrap;
 
 }
@@ -78,16 +78,16 @@
 /* Styling for additional information (p) */
 .Album-info p {
     justify-content: flex-start; /* Not necessary, as it's a paragraph element */
-    width: 160px;
-    margin-top: 3.125rem;
-    font-size: 1.125rem;
+    width: 10.416666666666666vw;
+    margin-top: 3.2552083333333335vw;
+    font-size: 1.171875vw;
     font-weight: 400;
     color: #EDEFEE;
     -webkit-text-stroke: 1px rgba(0, 0, 0, 0.1);
     opacity: 0.6; /* Used to specify the transparency of the color */
     position: absolute;
-    margin-top: 55px;
-    left: 200px;
+    margin-top:  3.5807291666666665vw;
+    left: 13.020833333333334vw;
     overflow: hidden;
     white-space: nowrap;
 }
@@ -96,18 +96,18 @@
 .music-layer-buttons {
     display: flex; /* Display the buttons in a row */
     margin-left: auto; /* Push the buttons to the right */
-    margin-left: 24.8rem; /* Adjusting margin */
+    margin-left: 25.833333333333332vw; /* Adjusting margin */
 }
 
 /* Styling for the buttons' images */
 /* Styling for the buttons' images */
 .music-layer-buttons img {
-    width: 2.5rem;
-    height: 2.5rem;
-    margin-left: 3.75rem; /* Add margin to separate the buttons */
+    width: 2.6041666666666665vw;
+    height: 2.6041666666666665vw;
+    margin-left: 3.90625vw; /* Add margin to separate the buttons */
     padding: 0rem; /* Remove padding */
     position: relative;
-    bottom: 20px;
+    bottom: 1.3020833333333333vw;
     cursor: pointer;
     transition: transform 0.3s ease; /* Add a smooth transition effect */
 }
@@ -118,7 +118,7 @@
 
 /* Adjusting margin for the sixth button */
 .music-layer-buttons img:nth-child(6) {
-    margin-left: 17rem;
+    margin-left:  17.708333333333332vw;
     margin-right: 0;
 }
 
@@ -130,16 +130,16 @@
 /* Styling for the music progression bar */
 #progresion-music {
     position: absolute;
-    top: 4.95rem;
-    left: 24.7rem;
-    width: 50rem;
-    bottom: 24px;
-    border-radius: 10px; 
+    top:  5.15625vw;
+    left: 25.729166666666668vw;
+    width: 52.083333333333336vw;
+    bottom: 1.5625vw;
+    border-radius: 0.6510416666666666vw; 
 }
 
 /* Styling for the volume progression bar */
 #progresion-volume {
-    margin-right: 0rem;
+    margin-right: 0vw;
     position: relative;
-    bottom: 20px;
+    bottom: 1.3020833333333333vw;
 }

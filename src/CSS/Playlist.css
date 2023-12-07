@@ -1,22 +1,22 @@
 .Playlist-container{
     background-color: #FFC7D1;
-    height: 300px;
-    padding-top: 5px;
+    height:  19.53125vw;
+    padding-top: 0.3255208333333333vw;
 }
 
 .Playlist-info{
     display: flex;
     justify-content: center;
-    margin-top: 50px;
-    margin-left: -460px;
+    margin-top: 3.2552083333333335vw;
+    margin-left: -29.947916666666668vw;
     
 }
 
 
 .Playlist-info img{
-    width: 200px;
-    height: 200px;
-    margin-right: 50px;
+    width: 13.020833333333334vw;
+    height: 13.020833333333334vw;
+    margin-right: 3.2552083333333335vw;
    
 }
 
@@ -25,7 +25,7 @@
 }
 
 .Playlist-container h1:first-child{
-    font-size: 32px;
+    font-size: 2.0833333333333335vw;
     color: black;
     font-weight: 700;
     font-family: sans-serif;
@@ -33,7 +33,7 @@
 }
 
 .Playlist-container h1:nth-child(2){
-    font-size: 32px;
+    font-size: 2.0833333333333335vw;
     color: black;
     font-weight: 600;
     font-family: sans-serif;
@@ -42,23 +42,40 @@
 
 .Login {
  background-color: #413F3F ;
- width: 180px;
- height: 53px;
- border-radius: 20px;
+ width: 11.71875vw;
+ height: 3.4505208333333335vw;
+ border-radius: 1.3020833333333333vw;
  color: #FFFFFF;
- font-size: 25px;
+ font-size: 1.6276041666666667vw;
  font-weight: 500;
  position: absolute;
- top: 25px;
- right: 50px;
- padding-left: 28px;
+ top: 1.6276041666666667vw;
+ right:  3.2552083333333335vw;
+ padding-left: 1.8229166666666667vw;
 }
 
 .Login-section img{
-    width: 39px;
-    height: 39px;
+    width: 2.5390625vw;
+    height: 2.5390625vw;
     position: absolute;
-    top: 32px;
-    right: 180px;
+    top: 2.0833333333333335vw;
+    right: 11.71875vw;
     z-index: 2;
+}
+
+@media  (max-width: 800px){
+  
+    .Playlist-container{
+        background-color: #FFC7D1;
+        height:  19.53125vw;
+        padding-top: 0.3255208333333333vw;
+    }
+
+    .Playlist-info{
+        display: flex;
+        justify-content: center;
+        margin-top: 3.2552083333333335vw;
+        margin-left: -5.947916666666668vw;
+        
+    }
 }

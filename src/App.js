@@ -26,13 +26,15 @@ const TopChartsURL = 'https://shazam.p.rapidapi.com/charts/track'
   const [home,setHome] = useState(true)
   const [favorites,setFavorites] = useState(false)
   const [search,setSearch] = useState(false)
-  const [topCharts,setTopCharts] = useState([])
+  const [topCharts,setTopCharts] = useState(null)
   const [selectedSong,setSelectedSong] = useState(null)
   const [information,setInformation] = useState(null)
   const [songProgress,setSongProgress] = useState(0)
   const [songFavorites,setSongFavorites] = useState([])  
   const [volume,setVolume]=useState(1.0)
-  const [searchSongs,setSearchSongs] = useState([])
+  const [searchSongs,setSearchSongs] = useState(null)
+  const [favoriteIndex,setFavoriteIndex] = useState(0)
+  const [searchIndex,setSearchIndex] = useState(0)
 
   
 
@@ -132,6 +134,130 @@ const [searchTerm,setSearchTerm] = useState('')
 const musicPlayerRef = useRef(null);
 
 
+
+const nextAudioSearchRef = useRef(new Audio())
+
+const playNextSongSearch = () => {
+  if (searchIndex != null && searchSongs && searchSongs.tracks.hits.length > 0) {
+    const nextIndex = (searchIndex + 1) % searchSongs.tracks.hits.length;
+    setSearchIndex(nextIndex);
+    const nextSong = searchSongs.tracks.hits[nextIndex];
+
+    if (nextSong) {
+      const nextAudio = nextAudioSearchRef.current;
+      nextAudio.src = nextSong.track.hub.actions[1].uri;
+
+      const nextSongData = {
+        song: nextSong.track.hub.actions[1].uri,
+        audioRef: nextAudioSearchRef,
+      };
+
+      stopSong();
+      nextAudioSearchRef.current.pause();
+      playSong(nextSongData);
+
+      if (nextAudioSearchRef.current) {
+        nextAudioSearchRef.current.addEventListener("ended", () => {
+          stopSong();
+        });
+      }
+    }
+  }
+};
+
+
+const prevAudioSearchRef = useRef(new Audio())
+const playPrevSongSearch = () => {
+  if (searchIndex != null && searchSongs && searchSongs.tracks.hits.length > 0) {
+    const prevIndex = (searchIndex -1 + searchSongs.tracks.hits.length) % searchSongs.tracks.hits.length;
+    setFavoriteIndex(prevIndex);
+    const prevSong = searchSongs.tracks.hits[prevIndex];
+
+    if (searchSongs) {
+      const prevAudio = prevAudioSearchRef.current;
+      prevAudio.src = prevSong.track.hub.actions[1].uri;
+      //prevAudio.volume = selectedSong.audioRef.current.volume;
+
+      const prevSongData = {
+        song: prevSong.track.hub.actions[1].uri,
+        audioRef: prevAudioSearchRef,
+      };
+      stopSong()
+      prevAudioSearchRef.current.pause()
+      playSong(prevSongData);
+
+      if (prevAudioSearchRef.current) {
+        prevAudioSearchRef.current.addEventListener("ended", () => {
+          stopSong();
+        });
+      }
+    }
+  }
+};
+
+
+
+const nextAudioFavRef = useRef(new Audio())
+const playNextSongFavorites = () => {
+  if (favoriteIndex != null) {
+    const nextIndex = (favoriteIndex + 1) % songFavorites.length;
+    setFavoriteIndex(nextIndex);
+    const nextSong = songFavorites[nextIndex];
+
+    if (songFavorites) {
+      const nextAudio = nextAudioFavRef.current;
+      nextAudio.src = nextSong.audio;
+
+      const nextSongData = {
+        song: nextSong.audio,
+        audioRef: nextAudioFavRef,
+      };
+      stopSong()
+      nextAudioFavRef.current.pause()
+      playSong(nextSongData);
+
+      if (nextAudioFavRef.current) {
+        nextAudioFavRef.current.addEventListener("ended", () => {
+          stopSong();
+        });
+      }
+    }
+  }
+};
+
+
+const prevAudioFavRef = useRef(new Audio())
+const playPrevSongFavorites = () => {
+  if (favoriteIndex != null) {
+    const prevIndex = (favoriteIndex -1 + songFavorites.length) % songFavorites.length;
+    setFavoriteIndex(prevIndex);
+    const prevSong = songFavorites[prevIndex];
+
+    if (songFavorites) {
+      const prevAudio = prevAudioFavRef.current;
+      prevAudio.src = prevSong.audio;
+      prevAudio.volume = selectedSong.audioRef.current.volume;
+
+      const prevSongData = {
+        song: prevSong.audio,
+        audioRef: prevAudioFavRef,
+      };
+      stopSong()
+      prevAudioFavRef.current.pause()
+      playSong(prevSongData);
+
+      if (prevAudioFavRef.current) {
+        prevAudioFavRef.current.addEventListener("ended", () => {
+          stopSong();
+        });
+      }
+    }
+  }
+};
+
+
+
+
 return (
   <div className="App">
     <div className="playlist-background">
@@ -195,6 +321,11 @@ return (
           playSongApp={playSong}
           setSelectedSong={setSelectedSong}
           stopSong={stopSong}
+          playNextSongFavorites={playNextSongFavorites}
+          favorites={favorites}
+          favoriteIndex={favoriteIndex}
+          setFavoriteIndex={setFavoriteIndex}
+          playPrevSongFavorites={playPrevSongFavorites}
           />
           {selectedSong && (
             <div className="MusicPlayer-container">
@@ -224,6 +355,8 @@ return (
           setInformation={setInformation}
           selectedSong={selectedSong}
           volume={volume}
+          playNextSongSearch={playNextSongSearch}
+          playPrevSongSearch={playPrevSongSearch}
           />
           {selectedSong && (
             <div className="MusicPlayer-container2">
@@ -238,6 +371,12 @@ return (
                 volume={volume}
                 setVolume={setVolume}
                 setInformation={setInformation}
+                playPrevSongSearch={playPrevSongSearch}
+                playNextSongSearch={playNextSongSearch}
+                searchIndex={searchIndex}
+                search={search}
+                searchSongs={searchSongs}
+                setSearchIndex={setSearchIndex}
               />
             </div>
           )}

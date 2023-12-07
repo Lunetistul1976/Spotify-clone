@@ -13,8 +13,8 @@ const SearchHeader = ({fetchSongs,searchTerm,setSearchTerm,stopSong})=>{
    }
 
     return(
-    <div className="Playlist-container" style={{backgroundColor:"#1DB954"}}>
-    <div className="Playlist-info_b">  
+    <div className="Playlist-container2" style={{backgroundColor:"#1DB954"}}>
+    <div className="Playlist-info_b2">  
     {/*<img src={searchLoop} alt="Search"/>*/}
     <input type="text" placeholder="Search"
     value={searchTerm}
@@ -26,9 +26,9 @@ const SearchHeader = ({fetchSongs,searchTerm,setSearchTerm,stopSong})=>{
     }}
     /> 
     </div>
-    <div className="Login-section">
+    <div className="Login-section2">
     <img src={login} alt="login"/>
-    <button className="Login">Rares</button>
+    <button className="Login2">Rares</button>
     </div>
  
     </div>

@@ -43,7 +43,7 @@ const HomeMain = ({ topCharts, playSongApp, stopSongApp, selectedSong, setInform
           ))}
         </div>
       ) : (
-        console.log("Error at Card 1")
+        <div className="Main-songs"></div>
       )}
 
       {topCharts && topCharts.tracks && topCharts.tracks.length > 0 ? (
@@ -70,7 +70,7 @@ const HomeMain = ({ topCharts, playSongApp, stopSongApp, selectedSong, setInform
           ))}
         </div>
       ) : (
-        console.log("Error at Card 2")
+        <div className="Main-songs2"></div>
       )}
 
       {topCharts && topCharts.tracks && topCharts.tracks.length > 0 ? (
@@ -97,7 +97,7 @@ const HomeMain = ({ topCharts, playSongApp, stopSongApp, selectedSong, setInform
           ))}
         </div>
       ) : (
-        console.log("Error at  Card 3")
+        <div className="Main-songs3"></div>
       )}
 
       {selectedSong && (

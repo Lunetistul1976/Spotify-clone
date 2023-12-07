@@ -5,32 +5,32 @@
     background-color: #141313;
     flex-direction: column; /* Make sure the sidebar's children stack vertically */
     height: 79.2vh; /* Set the sidebar's height to 100% of the viewport height */
-    padding: 20px; /* Add padding as needed */
-    top: -40px;
+    padding:  1.3020833333333333vw; /* Add padding as needed */
+    top: -2.6041666666666665vw;
     position: absolute;
     z-index: 400;
 }
 
 .Sidebar-container ul{
-    margin-top: -40px;
+    margin-top: -2.6041666666666665vw;
     list-style: none;
 }
 
 .Sidebar-Links li{
-    padding-top: 30px;
-    margin-bottom: 20px;
+    padding-top: 1.953125vw;
+    margin-bottom: 1.3020833333333333vw;
 }
 
 .Sidebar-Links li:first-child{
-    margin-left: -15px;
-    padding-top: 10px;
-    margin-bottom: -50px;
+    margin-left: -0.9765625vw;
+    padding-top: 0.6510416666666666vw;
+    margin-bottom: -3.2552083333333335vw;
 }
 
 
 .Sidebar-Links li:first-child img{
-   width: 200px;
-   height: 200px;
+   width: 13.020833333333334vw;
+   height: 13.020833333333334vw;
    align-items: left;
    margin-left: 0px;
    margin-top: 0px;
@@ -38,26 +38,26 @@
 }
 
 .Sidebar-Links li:nth-child(3) img{
-    width: 25px;
-    height: 23px;
+    width:  1.6276041666666667vw;
+    height: 1.4973958333333333vw;
 }
 
 .Sidebar-Links li img{
-    width: 25px;
-    height: 25px;
+    width:  1.6276041666666667vw;
+    height:  1.6276041666666667vw;
     align-items: left;
-    margin-left: 14px;
+    margin-left: 0.9114583333333334vw;
 }
 
 .Sidebar-Links img{
-    margin-bottom: -3px;
+    margin-bottom: -0.1953125vw;
 }
 
 .Sidebar-container a{
     color: aliceblue;
     text-decoration: none;
-    font-size: 22px;
+    font-size: 1.4322916666666667vw;
     font-weight: 500;
-    margin-left: 10px;
+    margin-left: 0.6510416666666666vw;
    
 }

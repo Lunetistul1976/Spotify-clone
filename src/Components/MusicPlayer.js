@@ -10,7 +10,9 @@ import stop from '../Images/Stop_button.svg'
 import heart from '../Images/red_heart.png'
 
 const MusicPlayer = ({ selectedSong, songProgress, setSongProgress,setInformation,topCharts,playSongApp
-  ,information,setSongFavorites,songFavorites,volume,setVolume }) => {
+  ,information,setSongFavorites,songFavorites,volume,setVolume,playNextSongFavorites,favorites2,favoriteIndex,setFavoriteIndex, 
+  playPrevSongFavorites, playNextSongSearch, playPrevSongSearch, searchIndex,search,searchSongs,setSearchIndex
+}) => {
 
 const [currentIndex,setCurrentIndex] = useState(0)
 const allIndices=[8,3,9,7,2,10,5,11,4]
@@ -18,7 +20,7 @@ const allIndices=[8,3,9,7,2,10,5,11,4]
   const inputRef = useRef(null)
   const volumeRef = useRef(null)
 
- 
+console.log(favorites2) 
 
   useEffect(() => {
     // Verifica daca o melodie este selectata
@@ -133,7 +135,42 @@ const handleVolumeChange = (value) => {
   }
  
 
+  const favoriteNextButton = () =>{
+    playNextSongFavorites()
+    if(favoriteIndex!=null ){
+      const nextIndex = (favoriteIndex + 1) % songFavorites.length;
+    setFavoriteIndex(nextIndex);
+    const nextSong = songFavorites[nextIndex];
+      setInformation({
+        title: nextSong.title,
+        artist: nextSong.artist,
+        image: nextSong.image,
+        song: nextSong.audio,
+      })
+      //console.log('Informatiile sunt',information)
+    }
+  }
+
+  const searchNextButton = () =>{
+    playNextSongSearch()
+    if(searchIndex!=null&&searchSongs){
+      const nextIndex = (searchIndex + 1) % searchSongs.tracks.hits.length;
+    setSearchIndex(nextIndex);
+    const nextSong = searchSongs.tracks.hits[nextIndex];
+if(nextSong&&nextSong.track){
+      setInformation({
+        title: nextSong.track.title,
+        artist: nextSong.track.subtitle,
+        image: nextSong.track.images.coverart,
+      })
+    }
+    console.log('Informatiile sunt',information)
+    }
+  }
+
+
   
+  const nextAudioRef = useRef(new Audio());
   // Funcția pentru a trece la următoarea melodie
 const nextButton = () => {
   // Verifică dacă există date pentru toate indicii și dacă currentIndex nu este null
@@ -156,8 +193,10 @@ const nextButton = () => {
           selectedSong&& selectedSong.audioRef 
          && selectedSong.audioRef.current
       ) {
-      const  nextAudio=selectedSong.audioRef
-      nextAudio.current.src=topCharts.tracks[nextSongIndex].hub.actions[1].uri
+      const  nextAudio=nextAudioRef.current
+      nextAudio.src=topCharts.tracks[nextSongIndex].hub.actions[1].uri
+
+      nextAudio.volume = selectedSong.audioRef.current.volume
         
           // Creează obiectul pentru următoarea melodie
           const nextSongData = {
@@ -165,7 +204,7 @@ const nextButton = () => {
               artist: topCharts.tracks[nextSongIndex].subtitle,
               image: topCharts.tracks[nextSongIndex].images.coverart,
               song:  topCharts.tracks[nextSongIndex].hub.actions[1].uri,
-              audioRef:nextAudio,
+              audioRef:nextAudioRef,
               
               
             //Codul functioneaza cu exceptia acestei instructiuni.Cel mai probabil referinta catre elementul audio asociat fisierului audio nu este corecta.
@@ -180,6 +219,42 @@ const nextButton = () => {
 }}};
 
 
+const searchPrevButton = () =>{
+  playPrevSongSearch()
+  if(searchIndex!=null&&searchSongs){
+    const prevIndex = (searchIndex - 1 + searchSongs.tracks.hits.length) % searchSongs.tracks.hits.length;
+  setSearchIndex(prevIndex);
+  const prevSong = searchSongs.tracks.hits[prevIndex];
+if(prevSong&&prevSong.track){
+    setInformation({
+      title: prevSong.track.title,
+      artist: prevSong.track.subtitle,
+      image: prevSong.track.images.coverart,
+    })
+  }
+  console.log('Informatiile sunt',information)
+  }
+}
+
+
+const favouritePreviousButton=()=>{
+
+  playPrevSongFavorites()
+  if(favoriteIndex!=null){
+    const prevIndex = (favoriteIndex - 1 + songFavorites.length) % songFavorites.length;
+  setFavoriteIndex(prevIndex);
+  const prevSong = songFavorites[prevIndex];
+    setInformation({
+      title: prevSong.title,
+      artist: prevSong.artist,
+      image: prevSong.image,
+      song: prevSong.audio,
+    })
+  }
+
+}
+
+const prevAudioRef = useRef(new Audio())
 
 const previousButton=()=>{
   // Verifică dacă există date pentru toate indicii și dacă currentIndex nu este null
@@ -200,21 +275,22 @@ const previousButton=()=>{
         selectedSong&& selectedSong.audioRef 
        && selectedSong.audioRef.current
     ) {
-     const nextAudio=selectedSong.audioRef
+     const prevAudio=prevAudioRef.current
+     prevAudio.src= topCharts.tracks[nextSongIndex].hub.actions[1].uri
+     
+     prevAudio.volume=selectedSong.audioRef.current.volume
         // Creează obiectul pentru următoarea melodie
         const nextSongData = {
             title: topCharts.tracks[nextSongIndex].title,
             artist: topCharts.tracks[nextSongIndex].subtitle,
             image: topCharts.tracks[nextSongIndex].images.coverart,
             song:  topCharts.tracks[nextSongIndex].hub.actions[1].uri,
-            audioRef:nextAudio,
+            audioRef:prevAudioRef,
             
             
           //Codul functioneaza cu exceptia acestei instructiuni.Cel mai probabil referinta catre elementul audio asociat fisierului audio nu este corecta.
             // De revizuit ce se intmapla cu elementul audio + De ce nu se opreste din redare elementul curent+ De ce nu incepe redarea elementul selectat
         };
-        
-        nextAudio.current.src=topCharts.tracks[nextSongIndex].hub.actions[1].uri
         // Redă următoarea melodie
         playSongApp(nextSongData);
        
@@ -223,8 +299,9 @@ const previousButton=()=>{
 
 }
   
-  const truncatedTitle = information.title.split('(')[0].trim()
-  const truncatedArtist = information.artist.split('&')[0].trim()
+const truncatedTitle = information.title ? information.title.split('(')[0].trim() : '';
+const truncatedArtist = information.artist ? information.artist.split('&')[0].trim() : '';
+
   return (
 
     
@@ -247,7 +324,7 @@ const previousButton=()=>{
 ) : (
   <img src={favorites} alt="favorites" onClick={favoritesButton} />
 )}
-<img src={previous} alt="previous" onClick={previousButton} />
+<img src={previous} alt="previous" onClick={favorites2?favouritePreviousButton:search?searchPrevButton:previousButton} />
 {selectedSong && selectedSong.audioRef && selectedSong.audioRef.current ? (
   selectedSong.audioRef.current.paused ? (
     <img src={stop} alt="play" onClick={playButton} />
@@ -255,7 +332,7 @@ const previousButton=()=>{
     <img src={play} alt="play" onClick={playButton} />
   )
 ) : null}
-<img src={next} alt="next" onClick={nextButton} />
+<img src={next} alt="next" onClick={favorites2? favoriteNextButton:search?searchNextButton:nextButton } />
 <img src={repeat} alt="repeat" onClick={replayButton} />
 <img src={Volume} alt="volume" />
 </div>

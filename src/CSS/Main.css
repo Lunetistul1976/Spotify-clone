@@ -2,7 +2,7 @@
     display: flex;
     position: relative;
     justify-content: center;
-    min-height: 28.281rem;
+    min-height: 29.459374999999998vw;
      /* Hide any content that overflows the container */
 }
 
@@ -10,28 +10,28 @@
     background-color: #141313;
     width: 100%; /* Make the table extend to the entire width of the container */
     border-collapse: collapse; /* Remove space between table cells */
-    margin-left: 200px;
+    margin-left: 13.020833333333334vw;
     max-height: 100%; /* Set a maximum height for the table */
     overflow-y: auto; /* Add vertical scroll if the table exceeds the maximum height */
 }
 
 .Main-container2 th {
-    padding: 10px; /* Add padding for spacing between cells */
+    padding:  0.6510416666666666vw; /* Add padding for spacing between cells */
     text-align: left; /* Adjust text alignment */
     color: #EDEFEE;
-    font-size: 18px;
+    font-size: 1.171875vw;
     font-weight: 400;
 }
 
 .Main-container2 td {
-    padding: 10px;
-    left: 40px;
+    padding: 0.6510416666666666vw;
+    left: 2.6041666666666665vw;
     text-align: left;
-    padding-left: 12.5px;
+    padding-left: 0.8138020833333334vw;
     color: #FFFFFF;
-    font-size: 20px;
+    font-size: 1.3020833333333333vw;
     font-weight: 500;
-    margin-top: -20px;
+    margin-top: -1.3020833333333333vw;
     
 }
 

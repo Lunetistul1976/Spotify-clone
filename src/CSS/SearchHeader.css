@@ -1,76 +1,76 @@
-.Playlist-container {
+.Playlist-container2 {
     background-color: #FFC7D1;
-    height: 300px;
-    padding-top: 5px;
+    height: 19.53125vw;
+    padding-top: 0.3255208333333333vw;
 }
 
-.Playlist-info {
+.Playlist-info2 {
     display: flex;
     justify-content: center;
-    margin-top: 50px;
-    margin-left: -460px;
+    margin-top: 3.2552083333333335vw;
+    margin-left: -29.947916666666668vw;
     position: relative;
 }
 
-.Playlist-info_b input {
+.Playlist-info_b2 input {
     position: relative;
-    top: 101px;
-    left: 85px;
-    width: 600px;
-    height: 50px;
-    border-radius: 25px; /* Increased border-radius for a smoother look */
+    top: 6.575520833333333vw;
+    left: 5.533854166666667vw;
+    width: 39.0625vw;
+    height:  3.2552083333333335vw;
+    border-radius: 1.6276041666666667vw; /* Increased border-radius for a smoother look */
     outline: none;
     background-color: #e8e8e8; /* Lighter background color */
     border: 2px solid #FF7395; /* Pink border for contrast */
     color: #333333; /* Darker text color for better readability */
-    padding-left: 20px; /* Adjusted padding for better spacing */
-    font-size: 20px;
+    padding-left: 1.3020833333333333vw; /* Adjusted padding for better spacing */
+    font-size: 1.3020833333333333vw;
     font-weight: 600;
     font-family: 'Pacifico',cursive;
 }
 
 /* Style the placeholder text for better visibility */
-.Playlist-info_b input::placeholder {
+.Playlist-info_b2 input::placeholder {
     font-weight: 700;
-    font-size: 18px; /* Slightly reduced placeholder font size */
+    font-size: 1.171875vw; /* Slightly reduced placeholder font size */
     position: relative;
-    top: 1px;
-    left: 5px;
+    top: 0.06510416666666667vw;
+    left: 0.3255208333333333vw;
 }
 
-.Playlist-info_b img {
+.Playlist-info_b2 img {
     position: relative;
-    left: 135px;
-    top: 117px;
-    width: 40px;
-    height: 40px;
+    left:  8.7890625vw;
+    top:  7.6171875vw;
+    width:  2.6041666666666665vw;
+    height:  2.6041666666666665vw;
     z-index: 2;
 }
 
 /* Add a CSS rule to hide the placeholder when interacting with the input field */
-.Playlist-info_b input:focus {
+.Playlist-info_b2 input:focus {
     transition: transform 0.3s ease;
 }
 
-.Login {
+.Login2 {
     background-color: #413F3F;
-    width: 180px;
-    height: 53px;
-    border-radius: 20px;
+    width: 11.71875vw;
+    height: 3.4505208333333335vw;
+    border-radius: 1.3020833333333333vw;
     color: #FFFFFF;
-    font-size: 25px;
+    font-size: 1.6276041666666667vw;
     font-weight: 500;
     position: absolute;
-    top: 25px;
-    right: 50px;
-    padding-left: 28px;
+    top: 1.6276041666666667vw;
+    right: 3.2552083333333335vw;
+    padding-left: 1.8229166666666667vw;
 }
 
-.Login-section img {
-    width: 39px;
-    height: 39px;
+.Login-section2 img {
+    width: 2.5390625vw;
+    height: 2.5390625vw;
     position: absolute;
-    top: 32px;
-    right: 180px;
+    top: 2.0833333333333335vw;
+    right: 11.71875vw;
     z-index: 2;
 }

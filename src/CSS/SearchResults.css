@@ -5,38 +5,38 @@
     justify-content: center;
     background-color: #141313;
     position: relative;
-    width: 1219px; /* Set the width and height for .Main-container */
-    height: 490px;
+    width: 79.36197916666667vw; /* Set the width and height for .Main-container */
+    height:  31.901041666666668vw;
 }
 
 .Main-songs1 {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    gap: 50px;
-    margin-left: -50px;
-    margin-top: 30px;
+    gap: 3.2552083333333335vw;
+    margin-left: -3.2552083333333335vw;
+    margin-top:  1.953125vw;
 }
 
 .Main-songs1 img {
-    width: 200px;
-    height: 200px;
+    width: 13.020833333333334vw;
+    height: 13.020833333333334vw;
     
 }
 
 .music-img-hidden{
     position: absolute;
     right: 0px;
-    top: 160px;
-    right: 5px;
+    top: 10.416666666666666vw;
+    right:  0.3255208333333333vw;
     opacity: 0;
     transition: opacity 0.3s;
     z-index: 3;
 }
 
 .music-img-hidden img{
-    width: 65px;
-    height: 65px;
+    width: 4.231770833333333vw;
+    height: 4.231770833333333vw;
     z-index: 4;
     transition: opacity 0.3s;
 }

@@ -2,15 +2,22 @@ import React, { useEffect, useRef } from "react";
 import '../CSS/Main.css';
 import MusicPlayer from "../Components/MusicPlayer";
 
-const Main = ({stopSong, songProgress, setSongProgress, information, songFavorites, setSongFavorites, volume, setVolume, setInformation, topCharts, playSongApp, setSelectedSong, selectedSong }) => {
+const Main = ({stopSong, songProgress, setSongProgress, information, songFavorites, 
+  setSongFavorites, volume, setVolume, 
+  setInformation, topCharts, 
+  playSongApp, setSelectedSong, selectedSong, playNextSongFavorites,favorites,favoriteIndex,setFavoriteIndex,playPrevSongFavorites }) => {
 
   const newSongFavorites = songFavorites ? Object.values(songFavorites) : [];
 
   const favoriteAudioRef = useRef(null);
 
   console.log("Valoarea variabilei selected song este", selectedSong)
+
+  console.log("Valorile din set songFavorites", songFavorites)
   
   const playAudio = (selectedAudio) => {
+
+    
     playSongApp({ audioRef: favoriteAudioRef, song: selectedAudio.audio });
    
     setInformation({
@@ -29,6 +36,7 @@ const Main = ({stopSong, songProgress, setSongProgress, information, songFavorit
       stopSong()
     }
     else{
+      stopSong()
       favoriteAudioRef.current.src=selectedAudio.audio
       playAudio(selectedAudio)
       
@@ -108,6 +116,11 @@ const Main = ({stopSong, songProgress, setSongProgress, information, songFavorit
             topCharts={topCharts}
             playSongApp={playSongApp}
             setSelectedSong={setSelectedSong}
+            playNextSongFavorites={playNextSongFavorites}
+            favorites2={favorites}
+            favoriteIndex={favoriteIndex}
+            setFavoriteIndex={setFavoriteIndex}
+            playPrevSongFavorites={playPrevSongFavorites}
           />
         </div>
       )}
