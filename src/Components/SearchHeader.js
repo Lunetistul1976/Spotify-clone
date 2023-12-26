@@ -3,7 +3,7 @@ import login from '../Images/Login.png'
 import '../CSS/SearchHeader.css'
 //import searchLoop from '../Images/Search_Icon.png'
 
-const SearchHeader = ({fetchSongs,searchTerm,setSearchTerm,stopSong})=>{
+const SearchHeader = ({fetchSongs,searchTerm,setSearchTerm,stopSong,usernames})=>{
    
 
    const handleSearch=()=>{
@@ -28,7 +28,8 @@ const SearchHeader = ({fetchSongs,searchTerm,setSearchTerm,stopSong})=>{
     </div>
     <div className="Login-section2">
     <img src={login} alt="login"/>
-    <button className="Login2">Rares</button>
+
+   { usernames? <button className="Login2">{usernames.username}</button>:null}
     </div>
  
     </div>

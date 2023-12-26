@@ -18,7 +18,7 @@ const Sidebar = (props) =>{ /*Fiecare component creat va avea parametrul/argumen
         the setState function to change the state (or the provided function from the useState hook in function components).
          As a result, the child components only update when the parent component's state changes with one of those functions. */}
         <li><img src={favorites} alt="favorites"/><a href="favorites" onClick={props.showFavorites}>Favorites</a></li>
-        <li><img src={logout} alt="logout"/><a href="logout">Log Out</a></li>
+        <li><img src={logout} alt="logout"/><a href="http://localhost:8000/api/log-out">Log Out</a></li>
 
        </ul>
 

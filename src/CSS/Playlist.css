@@ -42,16 +42,16 @@
 
 .Login {
  background-color: #413F3F ;
- width: 11.71875vw;
+ width: 12.71875vw;
  height: 3.4505208333333335vw;
  border-radius: 1.3020833333333333vw;
  color: #FFFFFF;
- font-size: 1.6276041666666667vw;
+ font-size: 1.4276041666666667vw;
  font-weight: 500;
  position: absolute;
  top: 1.6276041666666667vw;
  right:  3.2552083333333335vw;
- padding-left: 1.8229166666666667vw;
+ padding-left: 2.9229166666666667vw;
 }
 
 .Login-section img{
@@ -59,7 +59,7 @@
     height: 2.5390625vw;
     position: absolute;
     top: 2.0833333333333335vw;
-    right: 11.71875vw;
+    right: 12.91875vw;
     z-index: 2;
 }
 

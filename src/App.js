@@ -13,7 +13,7 @@ import axios from 'axios';
 const api_options={
   method: 'GET',
   headers: {
-    'X-RapidAPI-Key': 'd49948f7f9msh31004b1b44f6034p1b3e47jsn6c2a0f663014',
+    'X-RapidAPI-Key': '136dbafabdmsh324dbd9bc3a44cep132ec4jsn92bea8b9aea7',
     'X-RapidAPI-Host': 'shazam.p.rapidapi.com',
   },
 };
@@ -35,6 +35,7 @@ const TopChartsURL = 'https://shazam.p.rapidapi.com/charts/track'
   const [searchSongs,setSearchSongs] = useState(null)
   const [favoriteIndex,setFavoriteIndex] = useState(0)
   const [searchIndex,setSearchIndex] = useState(0)
+  const [usernames,setUserNames]=useState(null)
 
   
 
@@ -130,6 +131,26 @@ const [searchTerm,setSearchTerm] = useState('')
      }
   }
 
+
+  
+
+  useEffect(() => {
+    const fetchUsername = async () => {
+      try {
+        const response = await axios.get('http://localhost:8000/api/current-user', { withCredentials: true });
+        setUserNames(response.data);
+        
+        console.log('This is the username:', response.data);
+      } catch (error) {
+        console.error('Error in obtaining username', error);
+        
+      }
+    };
+
+    fetchUsername();
+  }, []);
+
+  
 
 const musicPlayerRef = useRef(null);
 
@@ -258,14 +279,23 @@ const playPrevSongFavorites = () => {
 
 
 
+const deleteUser= async()=>{
+  try{
+await axios.delete('http://localhost:8000/api/log-out')
+}
+catch(error){
+console.error('Error in deleting the user', error)
+}
+}
+
 return (
   <div className="App">
     <div className="playlist-background">
-      {home === true ? <PlaylistHome /> : favorites ? <Playlist /> : search ? <SearchHeader 
+      {home === true ? <PlaylistHome usernames={usernames} /> : favorites ? <Playlist usernames={usernames} /> : search ? <SearchHeader usernames={usernames} 
       fetchSongs={fetchSongs} setSearchTerm={setSearchTerm} searchTerm={searchTerm} stopSong={stopSong} 
       /> : null}
     </div>
-    <Sidebar showHome={show_home} showFavorites={show_favorites} showSearch={show_search} />
+    <Sidebar showHome={show_home} showFavorites={show_favorites} showSearch={show_search} deleteUser={deleteUser} />
 
     <div>
       {home === true ? (

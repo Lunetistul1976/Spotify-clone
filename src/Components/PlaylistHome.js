@@ -3,7 +3,7 @@ import album_img from '../Images/Album_cover.png'
 import login from '../Images/Login.png'
 import '../CSS/Playlist.css'
 
-const PlaylistHome = (props)=>{
+const PlaylistHome = ({usernames})=>{
     return(
     <div className="Playlist-container" style={{backgroundColor:"#1DB954"}}>
     <div className="Playlist-info">
@@ -15,7 +15,8 @@ const PlaylistHome = (props)=>{
     </div>
     <div className="Login-section">
     <img src={login} alt="login"/>
-    <button className="Login">Rares</button>
+    { usernames ?
+    <button className="Login">{usernames.username}</button>: null}
     </div>
  
     </div>
