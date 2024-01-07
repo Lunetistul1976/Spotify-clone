@@ -107,3 +107,9 @@ background-color: #404040;
     transition: opacity 0.3s;
     max-width: 22.786458333333332vw;
 }
+
+@media screen and (max-width:756px) {
+    .music-img-hidden{
+        display: none;
+    }
+}
