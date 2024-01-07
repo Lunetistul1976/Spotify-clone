@@ -1,4 +1,4 @@
-import React,{useRef} from "react";
+import React,{useEffect, useRef} from "react";
 import '../CSS/HomeMain.css';
 import Card from "../Components/Card.js";
 import MusicPlayer from "../Components/MusicPlayer";
@@ -16,6 +16,25 @@ const HomeMain = ({ topCharts, playSongApp, stopSongApp, selectedSong, setInform
     playSongApp(songData);
     setInformation(songData);
   };
+
+  useEffect(() => {
+    const handleResize = () => {
+      const musicPlayerContainer = document.querySelector('.MusicPlayer-container2');
+      if (musicPlayerContainer && window.innerWidth < 768) {
+        musicPlayerContainer.classList.add('move-down');
+      } else if (musicPlayerContainer) {
+        musicPlayerContainer.classList.remove('move-down');
+      }
+    };
+  
+    handleResize();
+  
+    window.addEventListener('resize', handleResize);
+  
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   return (
     <div className="Main-container">

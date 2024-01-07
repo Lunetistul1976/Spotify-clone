@@ -2,7 +2,7 @@
     display: flex;
     position: relative;
     justify-content: center;
-    min-height: 29.459374999999998vw;
+    min-height: 100vh;
      /* Hide any content that overflows the container */
 }
 
@@ -46,4 +46,16 @@
 
 
 /* Add some additional styling for alternate row colors (optional) */
+
+@media  (max-width: 800px) {
+    .Main-container2 {
+        display: flex;
+        justify-content: center;
+        background-color: #141313;
+        position: relative;
+        height: 100vh;
+    }
+
+    
+}
 

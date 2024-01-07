@@ -9,33 +9,33 @@ body {
 
 #form-bg {
     background-color: #141313;
-    width: 630px;
-    height: 597px;
+    width: 41.475vw;
+    height: 39.302vw;
     position: relative;
     color: #FFFFFF;
     display: flex;
     justify-content: center;
     align-items: center;
-    bottom: 25px;
+    bottom: 1.646vw;
     flex-direction: column;
 }
 
 #form-bg h2 {
-    font-size: 25px;
+    font-size: 1.646vw;
     font-weight: 600;
     position: relative;
-    bottom: 65px;
+    bottom: 4.279vw;
 
 }
 
 
 
 #form-bg img {
-    width: 178px;
-    height: 178px;
-    border-radius: 20px;
+    width: 11.718vw;
+    height: 11.718vw;
+    border-radius: 1.317vw;
     position: relative;
-    bottom: 15px;
+    bottom: 0.987vw;
 }
 
 .form-group {
@@ -44,31 +44,33 @@ body {
     flex-direction: column;
     align-items: center;
     position: relative;
-    margin-bottom: 10px;
+    margin-bottom: 0.658vw;
 }
 
 #form-bg input {
-    width: 400px;
-    height: 46px;
-    border-radius: 20px;
-    margin-bottom: 10px;
-    font-size: 16px;
+    width: 26.333vw;
+    height: 3.028vw;
+    border-radius: 1.317vw;
+    margin-bottom: 0.658vw;
+    font-size: 1.053vw;
     font-weight: 600;
     font-family: 'Roboto', sans-serif;
 }
 
 .form-group ::-webkit-input-placeholder {
-    font-size: 16px;
+    font-size: 1.053vw;
     font-weight: 600;
     position: relative;
-    left: 20px;
-    top: 1px;
+    left: 1.317vw;
+    top: 0.066vw;
 }
 
 
 
 article {
     position: relative;
-    bottom: 40px;
+    bottom: 2.633vw;
 }
 
+
+    

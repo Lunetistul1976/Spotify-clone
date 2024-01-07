@@ -6,7 +6,7 @@
     background-color: #141313;
     position: relative;
     width: 79.36197916666667vw; /* Set the width and height for .Main-container */
-    height:  31.901041666666668vw;
+    height:  100vh;
 }
 
 .Main-songs1 {
@@ -44,4 +44,15 @@
 .music-card-bg:hover .music-img-hidden{
     opacity: 1;
     z-index: 3;
+}
+
+@media (max-width:800px){
+    .Main-container1{
+        display: flex;
+        justify-content: center;
+        background-color: #141313;
+        position: relative;
+        height: 100vh;
+    }
+    
 }

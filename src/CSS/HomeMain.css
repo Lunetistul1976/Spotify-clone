@@ -44,7 +44,7 @@ height: 13.020833333333334vw;
         justify-content: center;
         background-color: #141313;
         position: relative;
-       height: 130vw;
+        height: 100vh; /* Adjust the height as needed */;
     }
 
     .Main-songs,
@@ -56,4 +56,5 @@ height: 13.020833333333334vw;
      right: 1.3020833333333333vw;    
      z-index: 10000;
 }
+
 }
