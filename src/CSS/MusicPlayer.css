@@ -159,45 +159,19 @@
     bottom: 1.3020833333333333vw;
 }
 
+
+   
 @media (max-width: 800px) {
-    
     /* Adjust the width of the input element for volume */
     #progresion-volume {
         width: 30%; /* Adjust the width as needed */
         height: 3px;
-        right: 0.8vw;
+        right: 0.5vw;
     }
-    #progresion-music{
+
+    #progresion-music {
         height: 3px;
-    }
-    /* Adjust the size of the range input thumb for smaller screens */
-    #progresion-music::-webkit-slider-thumb {
-        height: 2px; /* Set the desired height */
-        width: 2px; /* Set the desired width */
+        top: 21.5px;
     }
 
-    #progresion-music::-moz-range-thumb {
-        height: 2px;
-        width: 2px;
-    }
-
-    #progresion-music::-ms-thumb {
-        height: 12px;
-        width: 12px;
-    }
-    /* Adjust the size of the range input thumb for smaller screens */
-    #progresion-volume::-webkit-slider-thumb {
-        height: 12px; /* Set the desired height */
-        width: 12px; /* Set the desired width */
-    }
-
-    #progresion-volume::-moz-range-thumb {
-        height: 12px;
-        width: 12px;
-    }
-
-    #progresion-volume::-ms-thumb {
-        height: 12px;
-        width: 12px;
-    }
 }
