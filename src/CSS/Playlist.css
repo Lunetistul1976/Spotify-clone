@@ -29,7 +29,7 @@
     color: black;
     font-weight: 700;
     font-family: sans-serif;
-    -webkit-text-stroke: 1.5px black; /* 60% of 32px is 19.2px, so use an appropriate pixel value */
+    -webkit-text-stroke: 0.099vw black; /* 60% of 32px is 19.2px, so use an appropriate pixel value */
 }
 
 .Playlist-container h1:nth-child(2){

@@ -5,7 +5,22 @@
     min-height: 100vh;
      /* Hide any content that overflows the container */
 }
+.Main-container2::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 112%; /* Adjust this value to control the background growth */
+    background-color: #141313;
+    z-index: -1; /* Send the pseudo-element to the background */
+}
+/* 
 
+If you want the background of the container to grow more than the table when the table content exceeds the maximum height, you can modify 
+the CSS by setting the background on a pseudo-element (::before or ::after) of the .Main-container2 element. 
+This pseudo-element will be responsible for creating the background, while the table inside will maintain its size.
+*/
 .Main-container2 table {
     background-color: #141313;
     width: 100%; /* Make the table extend to the entire width of the container */
@@ -22,6 +37,11 @@
     font-size: 1.171875vw;
     font-weight: 400;
 }
+
+.Main-container2 tr{
+ position: relative;
+ bottom: 0.8vw;    
+} 
 
 .Main-container2 td {
     padding: 0.6510416666666666vw;

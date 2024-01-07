@@ -3,7 +3,7 @@
     justify-content: center;
     background-color: #141313;
     position: relative;
-    height: 100%;
+    height: 137.3vh;
    
 }
 
@@ -44,17 +44,23 @@ height: 13.020833333333334vw;
         justify-content: center;
         background-color: #141313;
         position: relative;
-        height: 100vh; /* Adjust the height as needed */;
+        height: 80vh; /* Adjust the height as needed */;
+        right: 2px;
     }
 
     .Main-songs,
     .Main-songs_2,
     .Main-songs_3 {
-     margin-right: 9vw;
+     margin-right: 15vw;
      margin-top:  30.2552083333333335vw;
      position: relative;
      right: 1.3020833333333333vw;    
      z-index: 10000;
+}
+.MusicPlayer-container3{
+    position: absolute;
+    top: 450px;
+    
 }
 
 }

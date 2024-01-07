@@ -120,7 +120,7 @@ const HomeMain = ({ topCharts, playSongApp, stopSongApp, selectedSong, setInform
       )}
 
       {selectedSong && (
-        <div className="MusicPlayer-container2">
+        <div className="MusicPlayer-container3">
           <MusicPlayer
             selectedSong={selectedSong}
             songProgress={songProgress}

@@ -316,23 +316,7 @@ return (
             setSongFavorites={setSongFavorites}
             setVolume={setVolume}
           />
-          {selectedSong && (
-            <div className="MusicPlayer-container">
-              <MusicPlayer
-                ref={musicPlayerRef}
-                selectedSong={selectedSong}
-                songProgress={songProgress}
-                setSongProgress={setSongProgress}
-                information={information}
-                songFavorites={songFavorites}
-                setSongFavorites={setSongFavorites}
-                volume={volume}
-                setVolume={setVolume}
-                setInformation={setInformation}
-                stopSong={stopSong}
-              />
-            </div>
-          )}
+          
         </div>
       ) : favorites ? (
         <div>
@@ -357,23 +341,7 @@ return (
           setFavoriteIndex={setFavoriteIndex}
           playPrevSongFavorites={playPrevSongFavorites}
           />
-          {selectedSong && (
-            <div className="MusicPlayer-container">
-              <MusicPlayer
-                ref={musicPlayerRef}
-                selectedSong={selectedSong}
-                songProgress={songProgress}
-                setSongProgress={setSongProgress}
-                information={information}
-                songFavorites={songFavorites}
-                setSongFavorites={setSongFavorites}
-                volume={volume}
-                setVolume={setVolume}
-                setInformation={setInformation}
-                stopSong={stopSong}
-              />
-            </div>
-          )}
+          
         </div>
       ) : search ? (
         <div>
