@@ -2,7 +2,7 @@
     display: flex;
     position: relative;
     justify-content: center;
-    min-height: 100vh;
+    min-height: 65.1vh;
      /* Hide any content that overflows the container */
 }
 .Main-container2::before {
@@ -11,7 +11,7 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 112%; /* Adjust this value to control the background growth */
+    height: 116%; /* Adjust this value to control the background growth */
     background-color: #141313;
     z-index: -1; /* Send the pseudo-element to the background */
 }
@@ -69,13 +69,26 @@ This pseudo-element will be responsible for creating the background, while the t
 
 @media  (max-width: 800px) {
     .Main-container2 {
-        display: flex;
-        justify-content: center;
         background-color: #141313;
-        position: relative;
-        height: 100vh;
+        min-height: 68vh;
     }
-
+    .MusicPlayer-container4 {
+        padding-bottom: 20px;
+        background-color: #141313;
+        text-align: center;
+        margin-top: 420px;
+       
+    }
+    .Main-container2::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 136%; /* Adjust this value to control the background growth */
+        background-color: #141313;
+        z-index: -1; /* Send the pseudo-element to the background */
+    }
     
 }
 

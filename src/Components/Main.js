@@ -102,7 +102,7 @@ const Main = ({stopSong, songProgress, setSongProgress, information, songFavorit
         null 
       )}
       {selectedSong && (
-        <div className="MusicPlayer-container2">
+        <div className="MusicPlayer-container4">
           <MusicPlayer
             selectedSong={selectedSong}
             songProgress={songProgress}

@@ -52,7 +52,10 @@
         justify-content: center;
         background-color: #141313;
         position: relative;
-        height: 100vh;
+        height: 90vh;
+    }
+    .MusicPlayer-container2{
+        margin-top: 10px;
     }
     
 }
